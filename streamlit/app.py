@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
-import pandas_profiling
+import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
 from pycaret.regression import setup as reg_setup, compare_models as reg_compare_models, pull as reg_pull, save_model as reg_save_model
 from pycaret.classification import setup as clf_setup, compare_models as clf_compare_models, pull as clf_pull, save_model as clf_save_model
@@ -29,7 +29,7 @@ if choice == "Upload":
     
 if choice == "Profiling":
     st.title("Automated EDA")
-    profile_report = df.profile_report()
+    profile_report = ydata_profiling.ProfileReport(df)
     st_profile_report(profile_report)
 
 if choice == "ML":
