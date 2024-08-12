@@ -1,4 +1,5 @@
 pandas
+--upgrade pip
 pandas-profiling
 streamlit
 streamlit-pandas-profiling
