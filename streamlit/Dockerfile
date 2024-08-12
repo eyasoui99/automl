@@ -1,6 +1,11 @@
 # Use an official Python runtime as a parent image
 FROM python:3.10
 
+RUN pip install virtualenv
+ENV VIRTUAL_ENV=/venv
+RUN virtualenv venv -p python3
+ENV PATH="VIRTUAL_ENV/bin:$PATH"
+
 # Set the working directory in the container
 WORKDIR /app
 
