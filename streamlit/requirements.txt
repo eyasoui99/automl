@@ -1,5 +1,5 @@
-pandas
-pandas-profiling
-streamlit
-streamlit-pandas-profiling
-pycaret
+pandas==1.5.1
+pandas-profiling==3.4.0
+streamlit==1.13.0
+streamlit-pandas-profiling==0.1.3
+pycaret==2.3.10
