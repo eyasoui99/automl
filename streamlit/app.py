@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
-import ydata_profiling
-from streamlit_pandas_profiling import st_profile_report
+import sweetviz as sv
 from pycaret.regression import setup as reg_setup, compare_models as reg_compare_models, pull as reg_pull, save_model as reg_save_model
 from pycaret.classification import setup as clf_setup, compare_models as clf_compare_models, pull as clf_pull, save_model as clf_save_model
 from pycaret.clustering import setup as clu_setup, compare_models as clu_compare_models, pull as clu_pull, save_model as clu_save_model
@@ -26,11 +25,14 @@ if choice == "Upload":
         df = pd.read_csv(file, index_col=None)
         df.to_csv("sourcedata.csv", index=None)
         st.dataframe(df)
-    
+
 if choice == "Profiling":
     st.title("Automated EDA")
-    profile_report = ydata_profiling.ProfileReport(df)
-    st_profile_report(profile_report)
+    if df is not None:
+        report = sv.analyze(df)
+        report.show_html(filepath='SWEETVIZ_REPORT.html', open_browser=False)
+        with open('SWEETVIZ_REPORT.html', 'r') as f:
+            st.components.v1.html(f.read(), height=800, scrolling=True)
 
 if choice == "ML":
     st.title("Machine Learning")
