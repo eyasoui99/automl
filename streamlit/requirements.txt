@@ -4,7 +4,7 @@ streamlit==1.13.0
 pycaret==3.0.0
 altair==4.2.2
 scikit-learn==1.2.2
-scikitplot==0.7.2
+scikitplot
 scipy==1.7.3
 setuptools
 wheel
